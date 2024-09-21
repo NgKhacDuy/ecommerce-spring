@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bda7392-2ec0-4ae0-8130-6a274a8dec0d" name="Changes" comment="init1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/repositories/CartItemRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/repositories/CartItemRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/repositories/CartRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/repositories/CartRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/repositories/OrderRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/repositories/OrderRepo.class" afterDir="false" />
-    </list>
+    <list default="true" id="4bda7392-2ec0-4ae0-8130-6a274a8dec0d" name="Changes" comment="change to postgresql" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,7 +68,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ECommerceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/2002n/Desktop/New folder/ECommerceApplication",
@@ -130,7 +121,7 @@
       <workItem from="1726891341873" duration="1588000" />
       <workItem from="1726901361265" duration="181000" />
       <workItem from="1726901561556" duration="5476000" />
-      <workItem from="1726907247115" duration="4130000" />
+      <workItem from="1726907247115" duration="4428000" />
     </task>
     <task id="LOCAL-00001" summary="add docker">
       <option name="closed" value="true" />
@@ -164,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726907948408</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="change to postgresql">
+      <option name="closed" value="true" />
+      <created>1726911542667</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726911542667</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +188,8 @@
     <MESSAGE value="add workflows" />
     <MESSAGE value="change location" />
     <MESSAGE value="init1" />
-    <option name="LAST_COMMIT_MESSAGE" value="init1" />
+    <MESSAGE value="change to postgresql" />
+    <option name="LAST_COMMIT_MESSAGE" value="change to postgresql" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
