@@ -24,6 +24,17 @@ public class JWTUtil {
 				.withClaim("email", email)
 				.withIssuedAt(new Date())
 				.withIssuer("Event Scheduler")
+				.withExpiresAt(new Date(System.currentTimeMillis() + 900000L)) // 15 minutes
+				.sign(Algorithm.HMAC256(secret));
+	}
+
+	public String generateRefreshToken(String email) throws IllegalArgumentException, JWTCreationException {
+		return JWT.create()
+				.withSubject("User Details")
+				.withClaim("email", email)
+				.withIssuedAt(new Date())
+				.withExpiresAt(new Date(System.currentTimeMillis() + 604800000L)) // 7 days
+				.withIssuer("Event Scheduler")
 				.sign(Algorithm.HMAC256(secret));
 	}
 	

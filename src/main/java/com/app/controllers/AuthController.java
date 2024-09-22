@@ -3,6 +3,9 @@ package com.app.controllers;
 import java.util.Collections;
 import java.util.Map;
 
+import com.app.config.ApiResponse;
+import com.app.payloads.RefreshTokenDto;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +38,9 @@ public class AuthController {
 	private JWTUtil jwtUtil;
 
 	@Autowired
+	private ApiResponse apiResponse;
+
+	@Autowired
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
@@ -55,7 +61,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/login")
-	public Map<String, Object> loginHandler(@Valid @RequestBody LoginCredentials credentials) {
+	public ResponseEntity<Object> loginHandler(@Valid @RequestBody LoginCredentials credentials) {
 
 		UsernamePasswordAuthenticationToken authCredentials = new UsernamePasswordAuthenticationToken(
 				credentials.getEmail(), credentials.getPassword());
@@ -63,7 +69,27 @@ public class AuthController {
 		authenticationManager.authenticate(authCredentials);
 
 		String token = jwtUtil.generateToken(credentials.getEmail());
+		String refreshToken = jwtUtil.generateRefreshToken(credentials.getEmail());
+		apiResponse.setData(Map.of("access_token", token, "refresh-token", refreshToken));
+		return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+	}
 
-		return Collections.singletonMap("jwt-token", token);
+	@PostMapping("/refresh-token")
+	public ResponseEntity<Object> refreshTokenHandler(@RequestBody RefreshTokenDto refreshTokenDto) {
+		String refreshToken = refreshTokenDto.getRefreshToken();
+		try {
+			String email = jwtUtil.validateTokenAndRetrieveSubject(refreshToken);
+			String newAccessToken = jwtUtil.generateToken(email);
+			apiResponse.setData(Map.of("access_token", newAccessToken));
+			return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+		} catch (JWTVerificationException e) {
+			e.printStackTrace();
+			apiResponse.setMessage("Invalid refresh token");
+			return new ResponseEntity<>(apiResponse, HttpStatus.UNAUTHORIZED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			apiResponse.setMessage("Internal server error");
+			return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
