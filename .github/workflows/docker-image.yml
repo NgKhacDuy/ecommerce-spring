@@ -25,5 +25,10 @@ jobs:
         run: |
           docker login -u khacduy -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push khacduy/ecommerce-spring:latest
+      - name: Deploy
+        env: 
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
           
           
