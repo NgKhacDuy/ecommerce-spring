@@ -59,4 +59,9 @@ public class UserController {
 		
 		return new ResponseEntity<String>(status, HttpStatus.OK);
 	}
+
+	@GetMapping("/health")
+	public ResponseEntity<String> healthCheck() {
+		return new ResponseEntity<String>("E-Commerce Application is up and running...", HttpStatus.OK);
+	}
 }
