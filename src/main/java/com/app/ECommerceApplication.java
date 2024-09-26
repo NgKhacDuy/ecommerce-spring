@@ -16,6 +16,7 @@ import com.app.repositories.RoleRepo;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 @SecurityScheme(name = "E-Commerce Application", scheme = "bearer", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
@@ -53,6 +54,11 @@ public class ECommerceApplication implements CommandLineRunner {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Scheduled(cron = "* /15 * * * ?")
+	public void cronJob() {
+		System.out.println("Cron job running...");
 	}
 
 }
