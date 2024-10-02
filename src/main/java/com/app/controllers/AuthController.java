@@ -70,8 +70,7 @@ public class AuthController {
 
 		String token = jwtUtil.generateToken(credentials.getEmail());
 		String refreshToken = jwtUtil.generateRefreshToken(credentials.getEmail());
-		apiResponse.setData(Map.of("access_token", token, "refresh-token", refreshToken));
-		return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+		return new ResponseEntity<>(Map.of("access_token", token, "refresh-token", refreshToken), HttpStatus.OK);
 	}
 
 	@PostMapping("/refresh-token")
@@ -80,8 +79,7 @@ public class AuthController {
 		try {
 			String email = jwtUtil.validateTokenAndRetrieveSubject(refreshToken);
 			String newAccessToken = jwtUtil.generateToken(email);
-			apiResponse.setData(Map.of("access_token", newAccessToken));
-			return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+			return new ResponseEntity<>(Map.of("access_token", newAccessToken), HttpStatus.OK);
 		} catch (JWTVerificationException e) {
 			e.printStackTrace();
 			apiResponse.setMessage("Invalid refresh token");
